@@ -1,0 +1,63 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+1. 文件解析与文本提取
+目标：将用户上传的文件（如 PDF、Word、Excel、TXT 等）转换为可处理的文本数据。
+
+关键技术：
+PDF 解析：
+PyMuPDF（fitz）：高效提取 PDF 文本和图像，支持中文。
+PDFMiner：适用于复杂排版的 PDF，但处理速度较慢。
+Apache PDFBox（Java）：适合 Java 后端解析 PDF。
+Office 文件解析：
+python-docx（Word）。
+openpyxl/xlrd（Excel）
+
+2.文本预处理与分块
+目标：将提取的文本进行清洗、分段，并分割为适合模型处理的“chunks”。
+
+关键技术：
+文本清洗：
+去除空格、标点符号、特殊字符。
+使用 re 模块（Python）或 StringUtils（Java）。
+分词与分句：
+NLTK/Spacy（Python）：分词、去除停用词。
+Jieba（中文分词）。
+分块策略：
+按固定长度分块。
+按语义逻辑分块（如段落、标题）。
+
+3. 向量化与检索
+目标：将文本转换为向量，并通过相似度匹配快速检索相关内容。
+
+关键技术：
+嵌入模型（Embedding）：
+Sentence-BERT（sentence-transformers 库）：开源、高效。
+FAISS（Facebook AI Similarity Search）：大规模向量检索库。
+Milvus/Pinecone：云原生向量数据库（适合生产环境）。
+检索流程：
+将文本分块后生成向量。
+存储向量到 FAISS 或 Milvus。
+用户提问时，将问题转为向量并检索最相关块。
+
+4.自然语言处理与答案生成
+目标：基于检索到的文本块，生成自然语言答案。
+
+关键技术：
+问答模型：
+deepseek：直接调用 API 生成答案。
+
+整合流程：
+检索到相关文本块。
+将问题和文本块拼接为 prompt。
+调用模型生成答案。
+
+5. 后端框架与接口设计
+目标：构建 API 接口，支持文件上传、问答交互。
+
+技术选择：
+Web 框架：
+
+FastAPI（Python）：高性能、异步支持、自动生成 API 文档。

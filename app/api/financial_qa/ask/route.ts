@@ -1,0 +1,51 @@
+{
+  "name": "fia0512",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "dev:python": "cd app && python main.py",
+    "dev:full": "concurrently \"npm run dev\" \"npm run dev:python\"",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^1.3.22",
+    "@radix-ui/react-avatar": "^1.1.9",
+    "@radix-ui/react-dialog": "^1.1.13",
+    "@radix-ui/react-dropdown-menu": "^2.1.14",
+    "@radix-ui/react-label": "^2.1.6",
+    "@radix-ui/react-progress": "^1.1.6",
+    "@radix-ui/react-select": "^2.2.4",
+    "@radix-ui/react-separator": "^1.1.6",
+    "@radix-ui/react-slider": "^1.3.4",
+    "@radix-ui/react-slot": "^1.2.2",
+    "@radix-ui/react-tabs": "^1.1.11",
+    "@radix-ui/react-toast": "^1.2.13",
+    "@radix-ui/react-toggle": "^1.1.8",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "ai": "^4.3.15",
+    "clsx": "^2.1.1",
+    "concurrently": "^8.2.2",
+    "fitz": "^0.0.1",
+    "lucide-react": "^0.510.0",
+    "next": "15.2.4",
+    "next-themes": "^0.4.6",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^2.16.105",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "tsx": "^4.8.0",
+    "typescript": "^5.3.3",
+    "uuid": "^11.1.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "class-variance-authority": "^0.7.1",
+    "postcss": "^8.4.36",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-animate": "^1.0.7"
+  }
+} 
