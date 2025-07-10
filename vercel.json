@@ -10,14 +10,6 @@
       "maxDuration": 30
     }
   },
-  "env": {
-    "BACKEND_URL": "@backend-url",
-    "DEEPSEEK_API_KEY": "@deepseek-api-key",
-    "DEEPSEEK_API_BASE": "@deepseek-api-base",
-    "NEXT_PUBLIC_SUPABASE_URL": "@next-public-supabase-url",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@next-public-supabase-anon-key",
-    "SUPABASE_SERVICE_ROLE_KEY": "@supabase-service-role-key"
-  },
   "regions": ["sin1"],
   "cleanUrls": true,
   "trailingSlash": false
