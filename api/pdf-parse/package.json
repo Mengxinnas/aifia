@@ -1,0 +1,11 @@
+{
+  "name": "pdf-parse-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "pdf-parse": "^1.1.1",
+    "fitz": "^0.0.1",
+    "pdf2json": "^3.1.6",
+    "formidable": "^3.5.1"
+  }
+} 

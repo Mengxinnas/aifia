@@ -1,12 +1,21 @@
 // app/api/qa/ask/route.ts
 import { NextResponse } from 'next/server';
 
-// 直接写入API KEY（仅限开发测试环境，生产环境请勿明文存储）
-const DEEPSEEK_API_KEY = "sk-c0c506ed07dc47a6b3713506a2ebd3c3";
-const DEEPSEEK_API_BASE = "https://api.deepseek.com"; // 使用官方推荐的base URL
+// 使用环境变量管理API配置
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const DEEPSEEK_API_BASE = process.env.DEEPSEEK_API_BASE || "https://api.deepseek.com";
 
 export async function POST(request: Request) {
   try {
+    // 检查API密钥是否配置
+    if (!DEEPSEEK_API_KEY) {
+      console.error('DEEPSEEK_API_KEY未配置');
+      return NextResponse.json(
+        { error: 'API配置错误：缺少API密钥' },
+        { status: 500 }
+      );
+    }
+
     const { question, context } = await request.json();
     
     console.log('调用DeepSeek V3流式模型:', question);
@@ -24,7 +33,7 @@ export async function POST(request: Request) {
         }
       ],
       temperature: 0.1,
-      max_tokens: 1000,  // 增加token限制
+      max_tokens: 1000,
       top_p: 0.8,
       stream: true
     };

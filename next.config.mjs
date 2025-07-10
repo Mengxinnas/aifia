@@ -8,34 +8,48 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-    domains: ['your-domain.com'],
   },
-  experimental: {
-    serverComponentsExternalPackages: ['pdf-parse'],
-  },
-  // Vercel 部署优化
-  output: 'standalone',
-  swcMinify: true,
-  compress: true,
-  poweredByHeader: false,
-  // 减少包大小
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
+  serverExternalPackages: ['pdf-parse', 'pdf2json', 'pdfjs-dist'],
+  
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // 忽略Python文件
+    config.module.rules.push({
+      test: /\.py$/,
+      loader: 'ignore-loader'
+    });
+    
+    // 处理Supabase realtime依赖警告
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    };
+    
+    // 处理关键依赖警告
+    config.module.exprContextCritical = false;
+    config.module.unknownContextCritical = false;
+    
     return config;
   },
-  // API 路由配置
-  async rewrites() {
+  
+  env: {
+    CUSTOM_KEY: process.env.CUSTOM_KEY,
+    BACKEND_URL: process.env.BACKEND_URL,
+  },
+  
+  compress: true,
+  
+  async headers() {
     return [
       {
-        source: '/api/backend/:path*',
-        destination: `${process.env.BACKEND_URL || 'http://localhost:8000'}/:path*`,
+        source: '/api/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, no-cache, must-revalidate',
+          },
+        ],
       },
     ];
   },

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import * as pdfParse from 'pdf-parse/lib/pdf-parse.js';
+// 移除直接导入，改为懒加载
+// import * as pdfParse from 'pdf-parse/lib/pdf-parse.js';
 
 interface InvoiceInfo {
   invoiceName: string;        
@@ -16,13 +17,16 @@ interface InvoiceInfo {
   totalAmount: string;        
 }
 
-// 解析PDF发票的核心函数
+// 懒加载PDF解析库
 async function parseInvoicePDF(file: File): Promise<InvoiceInfo> {
   const buffer = await file.arrayBuffer();
   const dataBuffer = Buffer.from(new Uint8Array(buffer));
   
   try {
-    const pdfData = await (pdfParse as any).default(dataBuffer, {
+    // 懒加载PDF解析库
+    const pdfParse = await import('pdf-parse').then(m => m.default);
+    
+    const pdfData = await pdfParse(dataBuffer, {
       version: false,
       max: 0,
       normalizeWhitespace: false,

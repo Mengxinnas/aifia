@@ -2,17 +2,29 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getBackendUrl } from '../api-config';
 
 const PYTHON_BACKEND_URL = getBackendUrl();
-// 直接设置 API 配置，用于开发环境
-const DEEPSEEK_API_KEY = 'sk-c0c506ed07dc47a6b3713506a2ebd3c3'; // 替换为你的 API Key
-const DEEPSEEK_API_BASE = 'https://api.deepseek.com';
+// 使用环境变量管理API配置
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+const DEEPSEEK_API_BASE = process.env.DEEPSEEK_API_BASE || 'https://api.deepseek.com';
 
 export async function POST(request: NextRequest) {
   try {
+    // 检查API密钥是否配置
+    if (!DEEPSEEK_API_KEY) {
+      console.error('DEEPSEEK_API_KEY未配置');
+      return NextResponse.json(
+        { 
+          success: false,
+          error: 'API配置错误：缺少API密钥' 
+        },
+        { status: 500 }
+      );
+    }
+
     const { question } = await request.json();
     
     console.log('=== 问答API调试信息 ===');
     console.log('问题:', question);
-    console.log('DEEPSEEK_API_KEY已配置');
+    console.log('DEEPSEEK_API_KEY已配置:', !!DEEPSEEK_API_KEY);
     console.log('DEEPSEEK_API_BASE:', DEEPSEEK_API_BASE);
     
     if (!question || !question.trim()) {

@@ -92,3 +92,21 @@ pip-delete-this-directory.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# 构建优化
+.next/cache/
+.swc/
+
+# 大文件和临时文件
+backend/temp/*.docx
+backend/temp/*.xlsx
+backend/temp/*.pdf
+*.tmp
+*.temp
+
+# 日志文件
+*.log
+logs/
+
+# 开发缓存
+.eslintcache
