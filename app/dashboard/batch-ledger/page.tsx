@@ -3,10 +3,10 @@
 import type React from "react"
 
 import { useState, useRef } from "react"
-import { DashboardLayout } from "@/components/dashboard-layout"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { DashboardLayout } from "../../../components/dashboard-layout"
+import { Button } from "../../../components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs"
 import {
   FileText,
   Upload,
@@ -24,13 +24,13 @@ import {
   FileArchive,
   FileBarChart,
 } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { useToast } from "@/components/ui/use-toast"
-import { AuthGuard } from "@/components/auth-guard"
-import { checkAndConsumeUsage } from "@/lib/usage-check-service"
+import { Input } from "../../../components/ui/input"
+import { Label } from "../../../components/ui/label"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../../components/ui/table"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../components/ui/select"
+import { useToast } from "../../../components/ui/use-toast"
+import { AuthGuard } from "../../../components/auth-guard"
+import { checkAndConsumeUsage } from "../../../lib/usage-check-service"
 
 // 合同要素类型定义
 interface ContractElement {
