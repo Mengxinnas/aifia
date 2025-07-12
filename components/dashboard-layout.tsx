@@ -5,8 +5,8 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "./ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import {
   BarChart3,
   FileText,
@@ -31,15 +31,15 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { cn } from "@/lib/utils"
-import { useIsMobile } from "@/hooks/use-mobile"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { getCurrentUser, signOut } from "@/lib/supabase"
-import { useToast } from "@/components/ui/use-toast"
-import { useNoFlash } from "@/hooks/use-no-flash"
+} from "./ui/dropdown-menu"
+import { Input } from "./ui/input"
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet"
+import { cn } from "../lib/utils"
+import { useIsMobile } from "../hooks/use-mobile"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog"
+import { getCurrentUser, signOut } from "../lib/supabase"
+import { useToast } from "./ui/use-toast"
+import { useNoFlash } from "../hooks/use-no-flash"
 
 interface DashboardLayoutProps {
   children: React.ReactNode

@@ -14,13 +14,6 @@ const nextConfig = {
   serverExternalPackages: ['pdf-parse', 'pdf2json', 'pdfjs-dist'],
   
   webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve(__dirname),
-      '@/lib': path.resolve(__dirname, 'lib'),
-      '@/components': path.resolve(__dirname, 'components'),
-    }
-    
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
@@ -35,6 +28,19 @@ const nextConfig = {
   },
   
   compress: true,
+  
+  experimental: {
+    ppr: false,
+  },
+  
+  output: 'standalone',
+  
+  // 跳过有问题的页面预渲染
+  skipTrailingSlashRedirect: true,
+  
+  generateBuildId: async () => {
+    return 'build-' + Date.now()
+  },
   
   async headers() {
     return [

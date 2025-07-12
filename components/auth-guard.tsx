@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { getCurrentUser } from "@/lib/supabase"
-import { useToast } from "@/components/ui/use-toast"
+import { getCurrentUser } from "../lib/supabase"
+import { useToast } from "./ui/use-toast"
 
 interface AuthGuardProps {
   children: React.ReactNode

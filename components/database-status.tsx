@@ -1,10 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Button } from "@/components/ui/button"
-import { testDatabaseConnection } from "@/lib/usage-service"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
+import { Alert, AlertDescription } from "./ui/alert"
+import { Button } from "./ui/button"
+import { testDatabaseConnection } from "../lib/usage-service"
 import { CheckCircle, XCircle, AlertTriangle, RefreshCw } from "lucide-react"
 
 export function DatabaseStatus() {
