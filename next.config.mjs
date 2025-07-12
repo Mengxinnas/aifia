@@ -12,6 +12,12 @@ const nextConfig = {
   serverExternalPackages: ['pdf-parse', 'pdf2json', 'pdfjs-dist'],
   
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // 添加路径别名配置
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': '.',
+    };
+    
     // 忽略Python文件
     config.module.rules.push({
       test: /\.py$/,
