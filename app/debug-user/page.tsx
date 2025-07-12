@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Button } from "../../../components/ui/button"
-import { Input } from "../../../components/ui/input"
-import { Label } from "../../../components/ui/label"
+import { Button } from "../../components/ui/button"
+import { Input } from "../../components/ui/input"
+import { Label } from "../../components/ui/label"
 import { ArrowLeft, User, Phone, Mail, Calendar, Database, Edit2 } from "lucide-react"
-import { useToast } from "../../../components/ui/use-toast"
-import { debugUserMetadata, getUserWithPhone, updateUserPhone } from '../../../lib/supabase'
+import { useToast } from "../../components/ui/use-toast"
+import { debugUserMetadata, getUserWithPhone, updateUserPhone } from '../../lib/supabase'
 
 export default function DebugUserPage() {
   const { toast } = useToast()

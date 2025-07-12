@@ -4,12 +4,12 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Button } from "../../../components/ui/button"
-import { Input } from "../../../components/ui/input"
-import { Label } from "../../../components/ui/label"
+import { Button } from "../../components/ui/button"
+import { Input } from "../../components/ui/input"
+import { Label } from "../../components/ui/label"
 import { Shield, ArrowLeft, Clock, Phone } from "lucide-react"
-import { useToast } from "../../../components/ui/use-toast"
-import { signUpWithPhoneNumber, testConnection } from '../../../lib/supabase'
+import { useToast } from "../../components/ui/use-toast"
+import { signUpWithPhoneNumber, testConnection } from '../../lib/supabase'
 
 export default function SignupPage() {
   const router = useRouter()

@@ -5,12 +5,12 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Button } from "../../../components/ui/button"
-import { Input } from "../../../components/ui/input"
-import { Label } from "../../../components/ui/label"
+import { Button } from "../../components/ui/button"
+import { Input } from "../../components/ui/input"
+import { Label } from "../../components/ui/label"
 import { ArrowLeft, Info, Zap, Clock, RefreshCw } from "lucide-react"
-import { useToast } from "../../../components/ui/use-toast"
-import { smartSignIn, upgradeToRealSession } from '../../../lib/supabase'
+import { useToast } from "../../components/ui/use-toast"
+import { smartSignIn, upgradeToRealSession } from '../../lib/supabase'
 
 export default function LoginPage() {
   const router = useRouter()
