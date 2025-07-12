@@ -3,10 +3,10 @@
 import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
-import { DashboardLayout } from "../../../components/dashboard-layout"
-import { Button } from "../../../components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../../components/ui/tabs"
+import { DashboardLayout } from "@/components/dashboard-layout"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   BarChart3,
   Upload,
@@ -27,17 +27,17 @@ import {
   AlertCircle,
   Zap,
 } from "lucide-react"
-import { Input } from "../../../components/ui/input"
-import { Label } from "../../../components/ui/label"
-import { Progress } from "../../../components/ui/progress"
-import { useToast } from "../../../components/ui/use-toast"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../components/ui/select"
-import { Separator } from "../../../components/ui/separator"
-import { Textarea } from "../../../components/ui/textarea"
-import { Badge } from "../../../components/ui/badge"
-import { AuthGuard } from "../../../components/auth-guard"
-import { UsageWarning } from '../../../components/usage-warning'
-import { checkAndConsumeUsage } from '../../../lib/usage-check-service'
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Progress } from "@/components/ui/progress"
+import { useToast } from "@/components/ui/use-toast"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Separator } from "@/components/ui/separator"
+import { Textarea } from "@/components/ui/textarea"
+import { Badge } from "@/components/ui/badge"
+import { AuthGuard } from "@/components/auth-guard"
+import { UsageWarning } from '@/components/usage-warning'
+import { checkAndConsumeUsage } from '@/lib/usage-check-service'
 import { useRouter } from 'next/navigation'
 
 // 添加财务分析Markdown渲染组件
@@ -218,7 +218,7 @@ function FinancialAnalysisPage() {
       console.log('当前时间:', new Date().toLocaleString())
       
       // 先获取当前用户信息
-      const { getCurrentUser } = await import('../../../lib/supabase')
+      const { getCurrentUser } = await import('@/lib/supabase')
       const user = await getCurrentUser()
       console.log('当前用户:', user?.id, user?.email)
       

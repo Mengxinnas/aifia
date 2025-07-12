@@ -2,9 +2,9 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { DashboardLayout } from "../../../components/dashboard-layout"
-import { Button } from "../../../components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../components/ui/card"
+import { DashboardLayout } from "@/components/dashboard-layout"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Shield,
   Upload,
@@ -14,15 +14,15 @@ import {
   RefreshCw,
   Clock,
 } from "lucide-react"
-import { Input } from "../../../components/ui/input"
-import { Label } from "../../../components/ui/label"
-import { Progress } from "../../../components/ui/progress"
-import { useToast } from "../../../components/ui/use-toast"
-import { Textarea } from "../../../components/ui/textarea"
-import { AuthGuard } from "../../../components/auth-guard"
-import { UsageWarning } from "../../../components/usage-warning"
-import { useUsageCheck } from "../../../lib/usage-middleware"
-import { checkAndConsumeUsage } from "../../../lib/usage-check-service"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Progress } from "@/components/ui/progress"
+import { useToast } from "@/components/ui/use-toast"
+import { Textarea } from "@/components/ui/textarea"
+import { AuthGuard } from "@/components/auth-guard"
+import { UsageWarning } from "@/components/usage-warning"
+import { useUsageCheck } from "@/lib/usage-middleware"
+import { checkAndConsumeUsage } from "@/lib/usage-check-service"
 
 export default function ProtectedAuditPage() {
   const { toast } = useToast()
