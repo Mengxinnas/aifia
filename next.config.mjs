@@ -1,3 +1,9 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -15,7 +21,7 @@ const nextConfig = {
     // 添加路径别名配置
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': '.',
+      '@': path.resolve(__dirname, '.'),
     };
     
     // 忽略Python文件
