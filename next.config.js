@@ -1,5 +1,3 @@
-const path = require('path');
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -12,40 +10,6 @@ const nextConfig = {
     unoptimized: true,
   },
   serverExternalPackages: ['pdf-parse', 'pdf2json', 'pdfjs-dist'],
-  
-  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-    // 添加路径别名配置
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve(__dirname, '.'),
-    };
-    
-    // 忽略Python文件
-    config.module.rules.push({
-      test: /\.py$/,
-      loader: 'ignore-loader'
-    });
-    
-    // 处理Supabase realtime依赖警告
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      net: false,
-      tls: false,
-    };
-    
-    // 处理关键依赖警告
-    config.module.exprContextCritical = false;
-    config.module.unknownContextCritical = false;
-    
-    return config;
-  },
-  
-  env: {
-    CUSTOM_KEY: process.env.CUSTOM_KEY,
-    BACKEND_URL: process.env.BACKEND_URL,
-  },
-  
   compress: true,
   
   async headers() {
@@ -63,4 +27,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig; 
+module.exports = nextConfig 
