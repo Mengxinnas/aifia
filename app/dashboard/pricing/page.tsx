@@ -1,25 +1,25 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { DashboardLayout } from "@/components/dashboard-layout"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
-import { useToast } from "@/components/ui/use-toast"
-import { AuthGuard } from "@/components/auth-guard"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { getCurrentUser } from "@/lib/supabase"
-import { DatabaseStatus } from "@/components/database-status"
+import { DashboardLayout } from "../../../components/dashboard-layout"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card"
+import { Button } from "../../../components/ui/button"
+import { Badge } from "../../../components/ui/badge"
+import { Progress } from "../../../components/ui/progress"
+import { useToast } from "../../../components/ui/use-toast"
+import { AuthGuard } from "../../../components/auth-guard"
+import { Alert, AlertDescription } from "../../../components/ui/alert"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../../../components/ui/dialog"
+import { getCurrentUser } from "../../../lib/supabase"
+import { DatabaseStatus } from "../../../components/database-status"
 import { 
   getUserUsageStatus, 
   getRedemptionHistory,
   type UserUsageStatus,
   PACKAGES,
   type PackageType
-} from '@/lib/usage-service'
-import { simulatePayment, PAYMENT_CONFIG } from "@/lib/payment-service"
+} from '../../../lib/usage-service'
+import { simulatePayment, PAYMENT_CONFIG } from "../../../lib/payment-service"
 import {
   Check,
   Zap,
@@ -37,7 +37,7 @@ import {
   ArrowRight
 } from "lucide-react"
 import Image from "next/image"
-import { RedemptionDialog } from '@/components/redemption-dialog'
+import { RedemptionDialog } from '../../../components/redemption-dialog'
 
 function PricingPage() {
   const { toast } = useToast()

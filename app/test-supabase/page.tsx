@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { supabase } from "@/lib/supabase"
+import { Button } from "../../../components/ui/button"
+import { supabase } from "../../../lib/supabase"
 
 export default function TestSupabasePage() {
   const [result, setResult] = useState<string>("")

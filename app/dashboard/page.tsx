@@ -1,8 +1,8 @@
 import type React from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { DashboardLayout } from "@/components/dashboard-layout"
-import { Button } from "@/components/ui/button"
-import { BarChart, LineChart } from "@/components/ui/chart"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../../components/ui/card"
+import { DashboardLayout } from "../../../components/dashboard-layout"
+import { Button } from "../../../components/ui/button"
+import { BarChart, LineChart } from "../../../components/ui/chart"
 import {
   FileText,
   MessageSquare,
@@ -15,7 +15,7 @@ import {
   BarChart3,
 } from "lucide-react"
 import Link from "next/link"
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "../../../components/ui/separator"
 
 export default function DashboardPage() {
   return (

@@ -3,12 +3,12 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Button } from "../../../components/ui/button"
+import { Input } from "../../../components/ui/input"
+import { Label } from "../../../components/ui/label"
 import { ArrowLeft, Key, Check, Phone, Mail, Zap } from "lucide-react"
-import { useToast } from "@/components/ui/use-toast"
-import { verifyUserIdentity, quickPasswordReset } from '@/lib/supabase'
+import { useToast } from "../../../components/ui/use-toast"
+import { verifyUserIdentity, quickPasswordReset } from '../../../lib/supabase'
 
 export default function SimpleResetPasswordPage() {
   const router = useRouter()
