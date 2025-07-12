@@ -3,8 +3,9 @@
 import type React from "react"
 
 import { useState } from "react"
-import { DashboardLayout } from "../../../components/dashboard-layout"
-import { Button } from "../../../components/ui/button"
+// 尝试从根目录导入
+import { DashboardLayout } from "/components/dashboard-layout"
+import { Button } from "/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../components/ui/card"
 import { Textarea } from "../../../components/ui/textarea"
 import { MessageSquare, Send, Clock, Bookmark, ThumbsUp, ThumbsDown, Copy, X } from "lucide-react"
@@ -12,7 +13,7 @@ import { useToast } from "../../../components/ui/use-toast"
 import ReactMarkdown from 'react-markdown'
 import { AuthGuard } from "../../../components/auth-guard"
 import { UsageWarning } from "../../../components/usage-warning"
-import { useUsageCheck } from "../../../lib/usage-middleware"
+import { useUsageCheck } from "../../../lib"
 import Link from "next/link"
 
 export default function ProtectedAccountingQAPage() {

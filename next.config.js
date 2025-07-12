@@ -1,3 +1,5 @@
+const path = require('path')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
@@ -10,6 +12,28 @@ const nextConfig = {
     unoptimized: true,
   },
   serverExternalPackages: ['pdf-parse', 'pdf2json', 'pdfjs-dist'],
+  
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname),
+      '@/lib': path.resolve(__dirname, 'lib'),
+      '@/components': path.resolve(__dirname, 'components'),
+    }
+    
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      net: false,
+      tls: false,
+    }
+    
+    config.module.exprContextCritical = false
+    config.module.unknownContextCritical = false
+    
+    return config
+  },
+  
   compress: true,
   
   async headers() {
@@ -23,7 +47,7 @@ const nextConfig = {
           },
         ],
       },
-    ];
+    ]
   },
 }
 
