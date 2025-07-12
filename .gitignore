@@ -51,7 +51,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+# lib/  # 注释掉这行，因为我们需要前端的lib目录
 lib64/
 parts/
 sdist/
