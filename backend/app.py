@@ -7,6 +7,7 @@ from typing import Dict, List, Optional
 import numpy as np
 import uvicorn
 import pandas as pd
+from datetime import datetime
 from fastapi import FastAPI, File, UploadFile, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -31,7 +32,12 @@ app = FastAPI(title="财务分析API", version="1.0.0")
 # 添加CORS中间件
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=[
+        "http://localhost:3000",
+        "https://aifia.vercel.app",  # 你的前端域名
+        "https://aifia.onrender.com",  # 后端自己的域名
+        os.getenv("FRONTEND_URL", "http://localhost:3000")
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -847,12 +853,46 @@ async def debug_reset():
 
 @app.get("/")
 async def root():
-    """根路径"""
+    """根路径健康检查"""
     return {
         "message": "财务分析后端服务",
         "version": "1.0.0",
-        "status": "运行中"
+        "status": "运行中",
+        "health": "ok"
     }
+
+@app.get("/health")
+async def health_check():
+    """详细健康检查"""
+    try:
+        # 检查核心组件状态
+        health_status = {
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(),
+            "version": "1.0.0",
+            "components": {
+                "document_store": len(document_store),
+                "vector_index": index.ntotal,
+                "tfidf_fitted": tfidf_fitted,
+                "temp_dir": os.path.exists("temp")
+            }
+        }
+        
+        # 检查必要的环境变量
+        required_env_vars = ["DEEPSEEK_API_KEY"]
+        missing_vars = [var for var in required_env_vars if not os.getenv(var)]
+        
+        if missing_vars:
+            health_status["warnings"] = f"Missing environment variables: {', '.join(missing_vars)}"
+        
+        return health_status
+        
+    except Exception as e:
+        return {
+            "status": "unhealthy",
+            "error": str(e),
+            "timestamp": datetime.now().isoformat()
+        }
 
 @app.post("/financial-analysis")
 async def generate_financial_analysis_fast(request: FinancialAnalysisRequest):
